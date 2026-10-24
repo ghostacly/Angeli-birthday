@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Happy Birthday Angeli!</title>
+<title>Happy Birthday Angeli! - by Andre</title>
 <style>
 :root{color-scheme:dark;--bg1:#1a1440;--bg2:#3b2a6e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html,body{height:100%;margin:0;background:#1a1440;overflow:hidden}
@@ -69,25 +69,25 @@ function rainbowBands(t){
   ctx.lineWidth=7;ctx.lineCap='butt';
   cols.forEach((c,i)=>{
     ctx.strokeStyle=c;ctx.globalAlpha=.32+Math.sin(t*1.5+i)*.06;
-    ctx.beginPath();ctx.arc(200,300,182+i*7,Math.PI,0);ctx.stroke();
+    ctx.beginPath();ctx.arc(200,300,204+i*7,Math.PI,0);ctx.stroke();
   });
   ctx.globalAlpha=1;
 }
 
 function arcText(txt,t){
-  const r=140;ctx.font='800 27px "Trebuchet MS",Verdana,sans-serif';
+  const r=168;ctx.font='900 32px "Arial Black","Trebuchet MS",Verdana,sans-serif';
   const ws=[...txt].map(ch=>ctx.measureText(ch).width+2);
   const total=ws.reduce((a,b)=>a+b,0);
   let a=-Math.PI/2-total/(2*r);
   [...txt].forEach((ch,i)=>{
     const ang=a+ws[i]/(2*r);a+=ws[i]/r;
-    const rad=r+Math.sin(t*2.5+i*.55)*4;
+    const jt=((t-i*.09)%2.6+2.6)%2.6;const rad=r+(jt<.35?Math.sin(jt/.35*Math.PI)*12:0);
     ctx.save();
     ctx.translate(200+Math.cos(ang)*rad,300+Math.sin(ang)*rad);
     ctx.rotate(ang+Math.PI/2);
     ctx.textAlign='center';ctx.textBaseline='alphabetic';
     ctx.lineWidth=5;ctx.strokeStyle='rgba(20,10,60,.7)';ctx.lineJoin='round';ctx.strokeText(ch,0,0);
-    ctx.fillStyle='hsl('+((i*16+t*60)%360)+',95%,68%)';ctx.fillText(ch,0,0);
+    ctx.fillStyle='#4dabf7';ctx.fillText(ch,0,0);
     ctx.restore();
   });
 }
